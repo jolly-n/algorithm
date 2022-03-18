@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 class Algorithm220310 {
 
-	// 런타임 오류(NumberFormat)
 	static void findNumber(List<String> li) {
 		List<BigInteger> numsList = new ArrayList<>();
 
@@ -17,24 +16,8 @@ class Algorithm220310 {
 			String[] nums = s.split("\\D"); // 정규표현식 (\\D:숫자가 아닌 것들을 공백으로 치환=[^0-9])
 
 			for (String num : nums) {
-				if (num != "") {
-					if (num.length() != 1 && num.charAt(0) == '0') {
-						String n = "";
-
-						if (num.charAt(num.length() - 1) == '0')
-							n += "0";
-
-						for (int i = 0; i < num.length(); i++)
-							if (num.charAt(i) != '0')
-								n += num.charAt(i);
-
-						numsList.add(BigInteger.valueOf(Long.parseLong(n)));
-					}
-
-					else {
-						numsList.add(BigInteger.valueOf(Long.parseLong(num)));
-					}
-				}
+				if (num != "")
+					numsList.add(new BigInteger(num)); // 생성자는 String 값을 받음
 			}
 		}
 
